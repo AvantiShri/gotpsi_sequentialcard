@@ -1,7 +1,7 @@
 # gotpsi_sequentialcard
 Repository for code for the Got Psi sequential card test
 
-## Known data issues
+## Data headaches
 
 Av is making a log of data headaches encountered so far
 
