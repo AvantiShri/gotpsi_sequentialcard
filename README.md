@@ -30,7 +30,9 @@ igryphon, 1, 6, 0,,2,4,1,5,3, ../../bi/images4/ok.jpg, Sat Feb  2 04:25:53 2002
 ...
 igryphon, 25, 1, 0,3,0,0,0,0, ../../bi/images4/ok.jpg, Sat Feb  2 04:29:12 2002
 ```
-On inspection, it seems that the highest trial number in this file is 25; trials after that just loop back to 1
+On inspection, it seems that the highest trial number in this file is 25; trials after that just loop back to 1.
+
+It also looks like the maximum trial number varies by user. IN the file `cardS18/cardS180101.dat`, the user `ovalpool` has a max trial number of 10, while the user `rada` has a max trial number of 25.
 
 ### Empty click entries
 
