@@ -47,3 +47,15 @@ chrisreed, 7, 2, Sat Feb  2 16:46:24 2002
 chrisreed, 7, 5, Sat Feb  2 16:46:26 2002
 chrisreed, 7, 6, 0,4,3,,1,2,5, ../../bi/images4/c7.jpg, Sat Feb  2 16:46:26 2002
 ```
+
+### Empty trial numbers
+
+Some rows don't have the trial number, e.g. `whisper11, , 4, 0,2,3,1,5,0, images/c9.jpg, Fri Jan 11 12:18:15 2002` in `/content/cardsequence/cardS02/cardS020111.dat`. To be on the safe side, these are excluded.
+
+### Non-unicode characters
+
+Some usernames have non-unicode characters - e.g. `âurora13` in `cardS03/cardS030112.dat`. I changed the encoding to `latin-1` to handle these.
+
+### Two different files for Jan 29th, 2002
+
+There are two different files corresponding to Jan 29th, 2002: `cardS02/cardS020129a.dat` and `cardS02/cardS020129a.dat`. The former seems normal; has entries starting from just after midnight on Jan 29th and extending until just before midnight, and has `16254` rows in total. The latter is weird; has only 1237 rows, has many entries from a test account, has entries starting on Jan 28th around 1pm, and the first entry from Jan 29th is after 10am. To be on the safe side, I am excluding this "b" file.
