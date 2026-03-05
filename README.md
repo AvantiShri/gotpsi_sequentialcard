@@ -36,7 +36,7 @@ It also looks like the maximum trial number varies by user. IN the file `cardS18
 
 ### Empty click entries
 
-It seems that the server sometimes logs prior to March 23rd 2002 contain empty clicks without an associated card entry. Here is an example:
+It seems that, prior to March 23rd 2002, the server sometimes logs contain empty clicks without an associated card entry. Here is an example:
 
 ```
 chrisreed, 7, 4, Sat Feb  2 16:46:19 2002
@@ -50,7 +50,7 @@ chrisreed, 7, 6, 0,4,3,,1,2,5, ../../bi/images4/c7.jpg, Sat Feb  2 16:46:26 2002
 
 ### Empty trial numbers
 
-Some rows (prior to March 23rd 2002) don't have the trial number, e.g. `whisper11, , 4, 0,2,3,1,5,0, images/c9.jpg, Fri Jan 11 12:18:15 2002` in `/content/cardsequence/cardS02/cardS020111.dat`. To be on the safe side, these are excluded.
+Some rows (mainly prior to March 23rd 2002) don't have the trial number, e.g. `whisper11, , 4, 0,2,3,1,5,0, images/c9.jpg, Fri Jan 11 12:18:15 2002` in `/content/cardsequence/cardS02/cardS020111.dat`. To be on the safe side, these are excluded.
 
 ### Non-unicode characters
 
