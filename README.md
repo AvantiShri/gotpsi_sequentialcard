@@ -56,6 +56,17 @@ Some rows don't have the trial number, e.g. `whisper11, , 4, 0,2,3,1,5,0, images
 
 Some usernames have non-unicode characters - e.g. `âurora13` in `cardS03/cardS030112.dat`. I changed the encoding to `latin-1` to handle these.
 
-### Two different files for Jan 29th, 2002
+### Two different files for Jan 29th to Jan 31st, 2002
 
 There are two different files corresponding to Jan 29th, 2002: `cardS02/cardS020129a.dat` and `cardS02/cardS020129a.dat`. The former seems normal; has entries starting from just after midnight on Jan 29th and extending until just before midnight, and has `16254` rows in total. The latter is weird; has only 1237 rows, has many entries from a test account, has entries starting on Jan 28th around 1pm, and the first entry from Jan 29th is after 10am. To be on the safe side, I am excluding this "b" file.
+
+There are similarly "a" and "b" files for Jan 30th, 2002 and Jan 31st, 2002. However, for those files, the "b" file is bigger, and there is no issue of a mismatched date in those files. Here are the line numbers:
+```
+16254 cardsequence/cardS02/cardS020129a.dat
+1237 cardsequence/cardS02/cardS020129b.dat
+5386 cardsequence/cardS02/cardS020130a.dat
+15505 cardsequence/cardS02/cardS020130b.dat
+3667 cardsequence/cardS02/cardS020131a.dat
+15624 cardsequence/cardS02/cardS020131b.dat
+```
+Because I don't know why these files were split, I am ignoring the data for these days.
