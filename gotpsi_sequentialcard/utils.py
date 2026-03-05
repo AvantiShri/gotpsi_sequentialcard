@@ -1,5 +1,6 @@
 import os
 from datetime import datetime, timedelta
+from collections import namedtuple
 
 
 def find_missing_dates(folder_path):
@@ -50,3 +51,50 @@ def find_missing_dates(folder_path):
         missing_ranges.append((range_start, range_end))
 
     return missing_ranges, earliest_date, latest_date, all_dates
+
+
+Trial = namedtuple('Trial', ['userid', 'trial', 'target_card', 'click_sequence', 'image', 'timestamp'])
+
+# Completed trial format:
+#   userid, trial, steps, r1,r2,r3,r4,r5,r6, imagepath, timestamp
+# Example: rada, 1, 2, 0,5,4,0,0,0, ../../bi/images4/c9.jpg, Thu Jan  1 00:05:52 2009
+def parse_trial_file(filepath):
+    trials = []
+    
+    with open(filepath, 'r') as f:
+        for line_num, line in enumerate(f, 1):
+            if 'image' not in line:
+                continue
+            
+            parts = [p.strip() for p in line.split(',')]
+            assert len(parts)==11, parts
+            
+            userid = parts[0]
+            trial_num = int(parts[1])
+            steps = int(parts[2])
+            clicks = [int(parts[i]) for i in range(3, 9)]  # r1 through r6
+            imagepath = parts[9]
+            timestamp_str = parts[10].strip()
+            timestamp = datetime.strptime(timestamp_str, '%a %b %d %H:%M:%S %Y')
+            
+            image = os.path.basename(imagepath)
+            
+            # Validate: r1 should always be 0
+            assert clicks[0] == 0, (
+                f"Line {line_num}: expected r1=0, got {clicks[0]}"
+            )
+            
+            # Validate: entries after 'steps' clicks should be 0
+            trailing = clicks[steps + 1:]
+            assert len(trailing)==0 or all(r == 0 for r in trailing), (
+                f"Line {line_num}: expected trailing zeros after step {steps}, "
+                f"got {clicks}"
+            )
+            
+            # Extract meaningful click sequence; target card is the last click
+            click_sequence = clicks[1:steps + 1]
+            target_card = click_sequence[-1]
+            
+            trials.append(Trial(userid, trial_num, target_card, click_sequence, image, timestamp))
+    
+    return trials
